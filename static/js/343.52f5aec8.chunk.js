@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[343],{343:function(e,r,t){t.r(r),t.d(r,{default:function(){return l}});var n=t(184),s=function(){return(0,n.jsxs)("form",{children:[(0,n.jsxs)("label",{htmlFor:"",children:["Email",(0,n.jsx)("input",{type:"email"})]}),(0,n.jsxs)("label",{htmlFor:"",children:["Password",(0,n.jsx)("input",{type:"password"})]})]})};function l(){return(0,n.jsxs)("div",{children:["Log in page",(0,n.jsx)(s,{})]})}}}]);
+//# sourceMappingURL=343.52f5aec8.chunk.js.map
