@@ -16,8 +16,8 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: initAuthState,
   extraReducers: builder => {
-    builder.addCase(register.fulfilled, (state, action) => {
-      console.log(action);
+    builder.addCase(register.fulfilled, (state, actions) => {
+      console.log(actions);
     });
   },
 });

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://goit-task-manager.herokuapp.com/';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
@@ -51,11 +51,11 @@ export const register = createAsyncThunk(
   async (credentials, thunkApi) => {
     try {
       const res = await axios.post('/users/signup', credentials);
-      // console.log(res);
+      console.log(res);
       // setAuthHeader(res.data.token);
-      return res.data;
+      return res;
     } catch (error) {
-      thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

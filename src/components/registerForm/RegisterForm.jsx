@@ -8,7 +8,7 @@ export const RegisterForm = () => {
     const userName = e.currentTarget.elements.name.value;
     const email = e.currentTarget.elements.email.value;
     const password = e.currentTarget.elements.password.value;
-    console.log({ userName, email, password });
+
     dispatch(register({ userName, email, password }));
     // e.target.reset();
   };
