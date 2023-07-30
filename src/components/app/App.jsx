@@ -5,9 +5,20 @@ import { Notification } from '../notification/Notification';
 import { Section } from '../section/Section';
 import css from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectError, selectIsLoading, selectItems } from 'redux/selectors';
-import { useEffect } from 'react';
+import {
+  isLoggedIn,
+  selectError,
+  selectIsLoading,
+  selectItems,
+} from 'redux/selectors';
+import { lazy, useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
+import { Route, Routes } from 'react-router-dom';
+import { SharedLayout } from 'components/sharedLayout/SharedLayout';
+
+const Home = lazy(() => import('../../pages/Home'));
+const LogIn = lazy(() => import('../../pages/LogIn'));
+const Register = lazy(() => import('../../pages/Register'));
 
 export const App = () => {
   const items = useSelector(selectItems);
@@ -20,23 +31,32 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <div className={css.container}>
-      <Section title={'Phonebook'}>
-        <ContactForm />
-      </Section>
-      <Section title={'Contacts'}>
-        <SearchContact />
-
-        {isLoading && !error && <b>Request in progress...</b>}
-        {items.length ? (
-          <ContactList />
-        ) : (
-          <Notification message={'the phonebook is empty!'} />
-        )}
-      </Section>
-    </div>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="logIn" element={<LogIn />} />
+        <Route path="register" element={<Register />} />
+      </Route>
+    </Routes>
   );
 };
+// <div className={css.container}>
+{
+  /* <Section title={'Phonebook'}>
+<ContactForm />
+</Section>
+<Section title={'Contacts'}>
+<SearchContact />
+
+{isLoading && !error && <b>Request in progress...</b>}
+{items.length ? (
+  <ContactList />
+) : (
+  <Notification message={'the phonebook is empty!'} />
+)}
+</Section>
+</div> */
+}
 
 // };
 
