@@ -1,16 +1,11 @@
-import { ContactForm } from '../contactsForm/ContactForm';
-import { SearchContact } from '../searchContact/SearchContact';
-import { ContactList } from '../contactList/ContactList';
-import { Notification } from '../notification/Notification';
-import { Section } from '../section/Section';
-import css from './App.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  isLoggedIn,
-  selectError,
-  selectIsLoading,
-  selectItems,
-} from 'redux/selectors';
+// import { ContactForm } from '../contactsForm/ContactForm';
+// import { SearchContact } from '../searchContact/SearchContact';
+// import { ContactList } from '../contactList/ContactList';
+// import { Notification } from '../notification/Notification';
+// import { Section } from '../section/Section';
+// import css from './App.module.css';
+import { useDispatch } from 'react-redux';
+// import { selectError, selectIsLoading, selectItems } from 'redux/selectors';
 import { lazy, useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 import { Route, Routes } from 'react-router-dom';
@@ -21,10 +16,10 @@ const LogIn = lazy(() => import('../../pages/LogIn'));
 const Register = lazy(() => import('../../pages/Register'));
 
 export const App = () => {
-  const items = useSelector(selectItems);
+  // const items = useSelector(selectItems);
 
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  // const isLoading = useSelector(selectIsLoading);
+  // const error = useSelector(selectError);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchContacts());
@@ -41,8 +36,8 @@ export const App = () => {
   );
 };
 // <div className={css.container}>
-{
-  /* <Section title={'Phonebook'}>
+// {
+/* <Section title={'Phonebook'}>
 <ContactForm />
 </Section>
 <Section title={'Contacts'}>
@@ -56,7 +51,7 @@ export const App = () => {
 )}
 </Section>
 </div> */
-}
+// }
 
 // };
 

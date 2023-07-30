@@ -38,21 +38,21 @@ export const deleteContacts = createAsyncThunk(
     }
   }
 );
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+// const setAuthHeader = token => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
 
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
-};
+// const clearAuthHeader = () => {
+//   axios.defaults.headers.common.Authorization = '';
+// };
 
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkApi) => {
     try {
       const res = await axios.post('/users/signup', credentials);
-      console.log(res);
-      setAuthHeader(res.data.token);
+      // console.log(res);
+      // setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
       thunkApi.rejectWithValue(error.message);

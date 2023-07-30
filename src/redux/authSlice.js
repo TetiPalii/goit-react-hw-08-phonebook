@@ -11,11 +11,12 @@ const initAuthState = {
   isRefreshing: false,
   token: '',
 };
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: initAuthState,
   extraReducers: builder => {
-    builder.addCase(register.pending, (state, action) => {
+    builder.addCase(register.fulfilled, (state, action) => {
       console.log(action);
     });
   },
