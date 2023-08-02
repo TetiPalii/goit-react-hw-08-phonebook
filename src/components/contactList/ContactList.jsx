@@ -9,7 +9,6 @@ import {
 } from 'redux/selectors';
 import { deleteContacts, fetchContacts } from 'redux/operations';
 import { useEffect } from 'react';
-import { useAuth } from 'redux/auth/useAuth';
 
 export function ContactList() {
   const dispatch = useDispatch();

@@ -7,28 +7,29 @@
 import { useDispatch } from 'react-redux';
 // import { selectError, selectIsLoading, selectItems } from 'redux/selectors';
 import { lazy, useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from 'components/sharedLayout/SharedLayout';
 import { Contacts } from 'pages/Contacts';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
+import { useAuth } from 'redux/auth/useAuth';
+import { refreshUser } from 'redux/auth/authOperations';
 
 const Home = lazy(() => import('../../pages/Home'));
 const LogIn = lazy(() => import('../../pages/LogIn'));
 const Register = lazy(() => import('../../pages/Register'));
 
 export const App = () => {
-  // const items = useSelector(selectItems);
-
-  // const isLoading = useSelector(selectIsLoading);
-  // const error = useSelector(selectError);
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <b>Refreshing user</b>
+  ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />

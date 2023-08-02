@@ -11,10 +11,11 @@ export const ContactForm = () => {
   const onFormSubmit = e => {
     e.preventDefault();
     const { name, number } = e.currentTarget.elements;
-    // console.log(items);
+
     if (
       items.some(
-        contact => contact.name.toLowerCase() === name.value.toLowerCase()
+        contact =>
+          contact.name.toLowerCase() === name.value.toLowerCase().trim()
       )
     ) {
       Notiflix.Report.warning(
@@ -23,7 +24,7 @@ export const ContactForm = () => {
       );
       return;
     } else {
-      dispatch(addContacts({ name: name.value, phone: number.value }));
+      dispatch(addContacts({ name: name.value, number: number.value }));
     }
 
     e.target.reset();
