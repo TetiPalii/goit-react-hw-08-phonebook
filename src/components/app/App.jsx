@@ -10,6 +10,9 @@ import { lazy, useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from 'components/sharedLayout/SharedLayout';
+import { Contacts } from 'pages/Contacts';
+import { RestrictedRoute } from 'components/RestrictedRoute';
+import { PrivateRoute } from 'components/PrivateRoute';
 
 const Home = lazy(() => import('../../pages/Home'));
 const LogIn = lazy(() => import('../../pages/LogIn'));
@@ -29,8 +32,24 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Home />} />
-        <Route path="logIn" element={<LogIn />} />
-        <Route path="register" element={<Register />} />
+        <Route
+          path="logIn"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LogIn />} />
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Contacts />} />
+          }
+        />
       </Route>
     </Routes>
   );

@@ -9,6 +9,7 @@ import {
 } from 'redux/selectors';
 import { deleteContacts, fetchContacts } from 'redux/operations';
 import { useEffect } from 'react';
+import { useAuth } from 'redux/auth/useAuth';
 
 export function ContactList() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export function ContactList() {
   const error = useSelector(selectError);
   const items = useSelector(selectItems);
   const visibleContacts = useSelector(selectVisibleContacts);
-  // console.log(visibleContacts);
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);

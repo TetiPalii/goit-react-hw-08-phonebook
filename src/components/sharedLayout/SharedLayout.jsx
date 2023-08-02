@@ -1,11 +1,11 @@
-import { Header } from 'components/header/Header';
+import { AppBar } from 'components/appBar/AppBar';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
 export const SharedLayout = () => {
   return (
     <div>
-      <Header />
+      <AppBar />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
