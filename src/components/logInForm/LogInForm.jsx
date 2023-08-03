@@ -1,31 +1,50 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
-import { useAuth } from 'redux/auth/useAuth';
 
 export const LogInForm = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const { user } = useAuth();
-  console.log(user);
+
+  const onChange = e => {
+    switch (e.target.name) {
+      case 'email':
+        setEmail(e.target.value);
+        break;
+      case 'password':
+        setPassword(e.target.value);
+        break;
+      default:
+        return;
+    }
+  };
 
   const onLoginSubmit = e => {
     e.preventDefault();
-    const form = e.currentTarget;
+
     dispatch(
       logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        email,
+        password,
       })
     );
   };
+
   return (
     <form onSubmit={onLoginSubmit}>
       <label htmlFor="">
         Email
-        <input type="email" name="email" value={user.email} />
+        <input type="email" name="email" value={email} onChange={onChange} />
       </label>
       <label htmlFor="">
         Password
-        <input type="password" name="password" value={user.password} />
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={onChange}
+        />
       </label>
       <button type="submit">Login</button>
     </form>
