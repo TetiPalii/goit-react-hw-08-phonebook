@@ -3,14 +3,20 @@ import { ContactForm } from 'components/contactsForm/ContactForm';
 import { Notification } from 'components/notification/Notification';
 import { SearchContact } from 'components/searchContact/SearchContact';
 import { Section } from 'components/section/Section';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from 'redux/operations';
 import { selectError, selectIsLoading, selectItems } from 'redux/selectors';
 
 export const Contacts = () => {
   const items = useSelector(selectItems);
-
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
   return (
     <main>
       <Section title={'Phonebook'}>

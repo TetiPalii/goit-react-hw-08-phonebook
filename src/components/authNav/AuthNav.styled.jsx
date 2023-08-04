@@ -15,7 +15,7 @@ export const NavLinkAuth = styled(NavLink)`
   }
 
   &.active {
-    color: #5050cc;
+    color: #0b6bcb;
 
     :hover,
     :focus {

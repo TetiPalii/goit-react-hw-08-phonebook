@@ -5,10 +5,11 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 3px;
   margin: 0 auto;
-  width: 100%;
+  width: 300px;
+  box-shadow: 1px 1px 5px gray;
+  padding: 30px;
 `;
 
 export const FormDiv = styled.div`
-  max-width: 300px;
-  margin: auto;
+  /* box-shadow: 1px 1px 5px gray; */
 `;

@@ -9,6 +9,7 @@ import {
 } from 'redux/selectors';
 import { deleteContacts, fetchContacts } from 'redux/operations';
 import { useEffect } from 'react';
+import { Button } from '@mui/joy';
 
 export function ContactList() {
   const dispatch = useDispatch();
@@ -26,22 +27,27 @@ export function ContactList() {
       {isLoading && <p>Loading contacts...</p>}
       {error && <p>{error.message}</p>}
       {items.length > 0 &&
-        visibleContacts.map(({ id, name, phone }) => {
+        visibleContacts.map(({ id, name, number }) => {
           // console.log(id);
           return (
             <li key={id} className={css.item__contact}>
-              <p>
-                {name}: <span>{phone}</span>
-              </p>
-              <button
-                className={css.contact__btn}
-                type="button"
-                onClick={() => {
-                  dispatch(deleteContacts(id));
-                }}
-              >
-                Delete
-              </button>
+              <div className={css.text__container}>
+                <p className={css.item__text}>
+                  {name}: <span>{number}</span>
+                </p>
+              </div>
+              <div className={css.button__container}>
+                <Button
+                  size="sm"
+                  className={css.contact__btn}
+                  type="button"
+                  onClick={() => {
+                    dispatch(deleteContacts(id));
+                  }}
+                >
+                  Delete
+                </Button>
+              </div>
             </li>
           );
         })}

@@ -4,6 +4,7 @@ import { addContacts } from 'redux/operations';
 import Notiflix from 'notiflix';
 import { selectItems } from 'redux/selectors';
 import Input from '@mui/joy/Input';
+import { Button } from '@mui/joy';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -53,9 +54,9 @@ export const ContactForm = () => {
           required
         />
       </label>
-      <button size="sm" type="submit">
+      <Button size="sm" type="submit">
         Add contact
-      </button>
+      </Button>
     </form>
   );
 };
