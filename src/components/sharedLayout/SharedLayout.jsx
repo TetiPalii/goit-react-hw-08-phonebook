@@ -6,9 +6,11 @@ export const SharedLayout = () => {
   return (
     <div>
       <AppBar />
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
+      <main>
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+      </main>
     </div>
   );
 };

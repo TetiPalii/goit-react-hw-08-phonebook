@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
+import { Form, FormDiv } from './LoginForm.styled';
+import Button from '@mui/joy/Button';
+import Input from '@mui/joy/Input';
 
 export const LogInForm = () => {
   const [email, setEmail] = useState('');
@@ -32,21 +35,25 @@ export const LogInForm = () => {
   };
 
   return (
-    <form onSubmit={onLoginSubmit}>
-      <label htmlFor="">
-        Email
-        <input type="email" name="email" value={email} onChange={onChange} />
-      </label>
-      <label htmlFor="">
-        Password
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={onChange}
-        />
-      </label>
-      <button type="submit">Login</button>
-    </form>
+    <FormDiv>
+      <Form onSubmit={onLoginSubmit}>
+        <label htmlFor="">
+          Email
+          <Input type="email" name="email" value={email} onChange={onChange} />
+        </label>
+        <label htmlFor="">
+          Password
+          <Input
+            type="password"
+            name="password"
+            value={password}
+            onChange={onChange}
+          />
+        </label>
+        <Button size="sm" width="150px" type="submit">
+          Login
+        </Button>
+      </Form>
+    </FormDiv>
   );
 };

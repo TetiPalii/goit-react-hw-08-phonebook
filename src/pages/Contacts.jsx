@@ -4,11 +4,9 @@ import { Notification } from 'components/notification/Notification';
 import { SearchContact } from 'components/searchContact/SearchContact';
 import { Section } from 'components/section/Section';
 import { useSelector } from 'react-redux';
-import { useAuth } from 'redux/auth/useAuth';
 import { selectError, selectIsLoading, selectItems } from 'redux/selectors';
 
 export const Contacts = () => {
- 
   const items = useSelector(selectItems);
 
   const isLoading = useSelector(selectIsLoading);

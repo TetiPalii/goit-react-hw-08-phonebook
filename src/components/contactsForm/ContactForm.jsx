@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContacts } from 'redux/operations';
 import Notiflix from 'notiflix';
 import { selectItems } from 'redux/selectors';
+import Input from '@mui/joy/Input';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export const ContactForm = () => {
     <form onSubmit={onFormSubmit} className={css.form}>
       <label className={css.label}>
         Name
-        <input
+        <Input
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я\s]+$"
@@ -44,7 +45,7 @@ export const ContactForm = () => {
       </label>
       <label className={css.label}>
         Number
-        <input
+        <Input
           type="tel"
           name="number"
           pattern="\+?[0-9\s\-\(\)]+"
@@ -52,7 +53,9 @@ export const ContactForm = () => {
           required
         />
       </label>
-      <button type="submit">Add contact</button>
+      <button size="sm" type="submit">
+        Add contact
+      </button>
     </form>
   );
 };

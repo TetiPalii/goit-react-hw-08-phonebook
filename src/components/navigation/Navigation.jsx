@@ -1,3 +1,4 @@
+import { NavLinkAuth } from 'components/authNav/AuthNav.styled';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from 'redux/auth/useAuth';
 
@@ -6,7 +7,7 @@ export const Navigation = () => {
 
   return (
     <nav>
-      <NavLink to="/">Home</NavLink>
+      <NavLinkAuth to="/">Home</NavLinkAuth>
       {isLoggedIn && <NavLink to="/contacts">Phonebook</NavLink>}
     </nav>
   );

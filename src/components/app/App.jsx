@@ -14,6 +14,8 @@ import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { useAuth } from 'redux/auth/useAuth';
 import { refreshUser } from 'redux/auth/authOperations';
+import { CssVarsProvider } from '@mui/joy/styles';
+import Sheet from '@mui/joy/Sheet';
 
 const Home = lazy(() => import('../../pages/Home'));
 const LogIn = lazy(() => import('../../pages/LogIn'));
@@ -30,29 +32,36 @@ export const App = () => {
   return isRefreshing ? (
     <b>Refreshing user</b>
   ) : (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        <Route index element={<Home />} />
-        <Route
-          path="logIn"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<LogIn />} />
-          }
-        />
-        <Route
-          path="register"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
-          }
-        />
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute redirectTo="/login" component={<Contacts />} />
-          }
-        />
-      </Route>
-    </Routes>
+    <CssVarsProvider>
+      <Sheet>
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<Home />} />
+            <Route
+              path="logIn"
+              element={
+                <RestrictedRoute redirectTo="/contacts" component={<LogIn />} />
+              }
+            />
+            <Route
+              path="register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/contacts"
+                  component={<Register />}
+                />
+              }
+            />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute redirectTo="/login" component={<Contacts />} />
+              }
+            />
+          </Route>
+        </Routes>
+      </Sheet>
+    </CssVarsProvider>
   );
 };
 // <div className={css.container}>

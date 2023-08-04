@@ -1,5 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
+import Input from '@mui/joy/Input';
+import { Form } from 'components/logInForm/LoginForm.styled';
+import { Button } from '@mui/joy';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -18,20 +21,22 @@ export const RegisterForm = () => {
     // e.target.reset();
   };
   return (
-    <form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit}>
       <label>
         Name
-        <input type="text" name="name" />
+        <Input type="text" name="name" />
       </label>
       <label>
         email
-        <input type="email" name="email" />
+        <Input type="email" name="email" />
       </label>
       <label>
         password
-        <input type="password" name="password" />
+        <Input type="password" name="password" />
       </label>
-      <button type="submit">Register</button>
-    </form>
+      <Button size="sm" type="submit">
+        Register
+      </Button>
+    </Form>
   );
 };
