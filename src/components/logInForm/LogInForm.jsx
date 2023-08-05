@@ -32,6 +32,8 @@ export const LogInForm = () => {
         password,
       })
     );
+    setEmail('');
+    setPassword('');
   };
 
   return (
